@@ -63,9 +63,9 @@
   <br><br>
 
   <!-- Bread02 Connection -->
-  <img src="https://img.shields.io/badge/Bead02-304CB2?style=for-the-badge&logo=Bead02&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Bread02-304CB2?style=for-the-badge&logo=Bread02&logoColor=white"/>
   <br>
-    <a href="mailto:wlalslbugye3025@gmail.com?subject=Connection%20To%20Bread02&body=Conatacting%20To%20Bead02"/>
+    <a href="mailto:wlalslbugye3025@gmail.com?subject=Connection%20To%20Bread02&body=Conatacting%20To%20Bread02"/>
     <img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white"/>
   </a>
 
