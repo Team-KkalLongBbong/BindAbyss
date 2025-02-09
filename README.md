@@ -35,7 +35,7 @@
   <a href="https://velog.io/@c0de94/posts">
     <img src="https://img.shields.io/badge/Velog-1EBC8F?style=for-the-badge&logo=velog&logoColor=white"/>
   </a>
-    <a href="mailto:your-protocol0209@naver.com?subject=Connection%20To%20Coder94&body=Conatacting%20To%20Coder94"/>
+    <a href="mailto:protocol0209@naver.com?subject=Connection%20To%20Coder94&body=Conatacting%20To%20Coder94"/>
     <img src="https://img.shields.io/badge/Naver-03C75A?style=for-the-badge&logo=gmail&logoColor=white"/>
   </a>
 
@@ -44,7 +44,7 @@
   <!-- Beeon Connection -->
   <img src="https://img.shields.io/badge/Beeon-304CB2?style=for-the-badge&logo=Beeon&logoColor=white"/>
   <br>
-    <a href="mailto:your-beeon4549@gmail.com?subject=Connection%20To%20Beeon&body=Conatacting%20To%20Beeon"/>
+    <a href="mailto:beeon4549@gmail.com?subject=Connection%20To%20Beeon&body=Conatacting%20To%20Beeon"/>
     <img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white"/>
   </a>
 
@@ -56,7 +56,7 @@
     <!-- <a href="임시이메일">
     <img src="https://img.shields.io/badge/Velog-1EBC8F?style=for-the-badge&logo=velog&logoColor=white"/> -->
   </a>
-    <a href="mailto:your-ehdkgusr@gmail.com?subject=Connection%20To%20jjj02&body=Conatacting%20To%20jjj02"/>
+    <a href="mailto:ehdkgusr@gmail.com?subject=Connection%20To%20jjj02&body=Conatacting%20To%20jjj02"/>
     <img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white"/>
   </a>
 
@@ -65,7 +65,7 @@
   <!-- Bread02 Connection -->
   <img src="https://img.shields.io/badge/Bead02-304CB2?style=for-the-badge&logo=Bead02&logoColor=white"/>
   <br>
-    <a href="mailto:your-wlalslbugye3025@gmail.com?subject=Connection%20To%20Bread02&body=Conatacting%20To%20Bead02"/>
+    <a href="mailto:wlalslbugye3025@gmail.com?subject=Connection%20To%20Bread02&body=Conatacting%20To%20Bead02"/>
     <img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white"/>
   </a>
 
@@ -74,7 +74,7 @@
   <!-- Kuma_Kim Connection -->
   <img src="https://img.shields.io/badge/Kuma_Kim-304CB2?style=for-the-badge&logo=Kuma_Kim&logoColor=white"/>
   <br>
-    <a href="mailto:your-kumakumasukida@gmail.com?subject=Connection%20To%20Kuma_Kim&body=Conatacting%20To%20Kuma_Kim"/>
+    <a href="mailto:kumakumasukida@gmail.com?subject=Connection%20To%20Kuma_Kim&body=Conatacting%20To%20Kuma_Kim"/>
     <img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white"/>
   </a>
   
