@@ -4,7 +4,11 @@
 PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 28
-  productGUID: 4320236f11936ea4784b9d9f8f4c5411
+<<<<<<< HEAD
+  productGUID: 9022e9f01a0dada4dae7dbd5b75c6b11
+=======
+  productGUID: bcc9b8d34e0b2454cb8caed23300939d
+>>>>>>> 2f8cff7534fec63b89257301063ee45d73af7164
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
   AndroidEnableSustainedPerformanceMode: 0
@@ -13,7 +17,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: DefaultCompany
-  productName: BIndAbyss
+  productName: BindAbyss
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -838,14 +842,14 @@ PlayerSettings:
   editorAssembliesCompatibilityLevel: 1
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
-  metroPackageName: BIndAbyss
+  metroPackageName: BindAbyss
   metroPackageVersion: 
   metroCertificatePath: 
   metroCertificatePassword: 
   metroCertificateSubject: 
   metroCertificateIssuer: 
   metroCertificateNotAfter: 0000000000000000
-  metroApplicationDescription: BIndAbyss
+  metroApplicationDescription: BindAbyss
   wsaImages: {}
   metroTileShortName: 
   metroTileShowName: 0
@@ -916,11 +920,19 @@ PlayerSettings:
   captureStartupLogs: {}
   activeInputHandler: 2
   windowsGamepadBackendHint: 0
-  cloudProjectId: 
+<<<<<<< HEAD
+  cloudProjectId: bf5a8da1-01cd-49fe-b69d-71ecbc963470
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: 
-  organizationId: 
+  projectName: BindAbyss
+  organizationId: beeon4549
+=======
+  cloudProjectId: ebcb2512-2225-4f3d-8d64-0e718c3ebcd7
+  framebufferDepthMemorylessMode: 0
+  qualitySettingsNames: []
+  projectName: BindAbyss
+  organizationId: ehdkgusr
+>>>>>>> 2f8cff7534fec63b89257301063ee45d73af7164
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   hmiLoadingImage: {fileID: 0}
