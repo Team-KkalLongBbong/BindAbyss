@@ -6,32 +6,31 @@ public class Stat : MonoBehaviour
 {
     //스탯선언=================================================================================
     [SerializeField]
-    protected int _level;
-    [SerializeField]
     protected int _hp;
     [SerializeField]
     protected int _maxHp;
     [SerializeField]
-    protected int _attack;
+    protected float _attack;
     [SerializeField]
-    protected int _denfense;
+    protected float _atkSpeed;
+    [SerializeField]
+    protected float _denfense;
     [SerializeField]
     protected float _movespeed;
 
 
     //스탯 프로퍼티 생성=================================================================================
-    public int Level { get { return _level; } set { _level = value; } }
     public int Hp { get { return _hp; } set { _hp = value; } }
     public int MaxHp { get { return _maxHp; } set { _maxHp = value; } }
-    public int Attack { get { return _attack; } set { _attack = value; } }
-    public int Defense { get { return _denfense; } set { _denfense = value; } }
+    public float Attack { get { return _attack; } set { _attack = value; } }
+    public float AtkSpeed { get { return _atkSpeed; } set { _atkSpeed = value; } }
+    public float Defense { get { return _denfense; } set { _denfense = value; } }
     public float MoveSpeed { get { return _movespeed; } set { _movespeed = value; } }
 
 
     //Start문 스탯 초기화=================================================================================
     public void Start()
     {
-        _level = 1;
         _hp = 100;
         _maxHp = 100;
         _attack = 10;
@@ -43,7 +42,7 @@ public class Stat : MonoBehaviour
     //데미지 페이즈 호출=================================================================================
     public virtual void OnAttacked(Stat attacker)
     {
-        int damage = Mathf.Max(0, attacker.Attack - Defense);
+        int damage = (int)Mathf.Max(0, attacker.Attack - Defense);
         Hp -= damage;
         if (Hp <= 0)
         {
