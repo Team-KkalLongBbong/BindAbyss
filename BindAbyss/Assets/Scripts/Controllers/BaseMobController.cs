@@ -10,34 +10,6 @@ public abstract class BaseMobController : MonoBehaviour
         _stat = gameObject.GetOrAddComponent<MonsterStat>();
         state = Define.MobState.Move;
     }
-
-    private void Update()
-    {
-        ActionControl();
-    }
-
-    protected void ActionControl()
-    {
-        switch (state)
-        {
-            case Define.MobState.Default:
-                Idle();
-                break;
-            case Define.MobState.Attack:
-                Attack();
-                break;
-            case Define.MobState.Move:
-                Move();
-                break;
-            case Define.MobState.Damaged:
-                Damaged();
-                break;
-            case Define.MobState.Death:
-                Death();
-                break;
-        }
-    }
-
     protected abstract void Idle();
 
     protected abstract void Move();
