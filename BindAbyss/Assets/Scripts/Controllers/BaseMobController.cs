@@ -2,12 +2,12 @@ using UnityEngine;
 
 public abstract class BaseMobController : MonoBehaviour
 {
-    Test _stat;
+    MonsterStat _stat;
     Define.MobState state;
 
     private void Start()
     {
-        _stat = gameObject.GetOrAddComponent<Test>();
+        _stat = gameObject.GetOrAddComponent<MonsterStat>();
         state = Define.MobState.Move;
     }
 
@@ -20,6 +20,9 @@ public abstract class BaseMobController : MonoBehaviour
     {
         switch (state)
         {
+            case Define.MobState.Default:
+                Idle();
+                break;
             case Define.MobState.Attack:
                 Attack();
                 break;
@@ -34,6 +37,8 @@ public abstract class BaseMobController : MonoBehaviour
                 break;
         }
     }
+
+    protected abstract void Idle();
 
     protected abstract void Move();
 
