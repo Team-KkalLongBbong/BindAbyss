@@ -8,7 +8,7 @@ public abstract class BaseMobController : MonoBehaviour
     private void Start()
     {
         _stat = gameObject.GetOrAddComponent<Test>();
-        state = Define.MobState.Default;
+        state = Define.MobState.Move;
     }
 
     private void Update()
@@ -20,9 +20,6 @@ public abstract class BaseMobController : MonoBehaviour
     {
         switch (state)
         {
-            case Define.MobState.Default:
-                NonDetectedMove();
-                break;
             case Define.MobState.Attack:
                 Attack();
                 break;
@@ -36,11 +33,6 @@ public abstract class BaseMobController : MonoBehaviour
                 Death();
                 break;
         }
-    }
-
-    protected void NonDetectedMove()
-    {
-
     }
 
     protected abstract void Move();

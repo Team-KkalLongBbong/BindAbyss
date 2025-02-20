@@ -6,7 +6,6 @@ public class Define
 {
     public enum MobState
     {
-        Default,
         Attack,
         Move,
         Damaged,
