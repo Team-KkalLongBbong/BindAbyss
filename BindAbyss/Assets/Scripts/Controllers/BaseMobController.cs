@@ -2,8 +2,8 @@ using UnityEngine;
 
 public abstract class BaseMobController : MonoBehaviour
 {
-    MonsterStat _stat;
-    Define.MobState state;
+    protected MonsterStat _stat;
+    protected Define.MobState state;
 
     private void Start()
     {

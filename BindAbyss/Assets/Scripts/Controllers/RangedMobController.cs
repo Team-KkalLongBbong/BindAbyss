@@ -2,6 +2,10 @@ using UnityEngine;
 
 public class RangedMobController : BaseMobController
 {
+    protected override void Idle()
+    {
+        throw new System.NotImplementedException();
+    }
 
     protected override void Move()
     {
@@ -13,10 +17,7 @@ public class RangedMobController : BaseMobController
         throw new System.NotImplementedException();
     }
 
-    protected override void Idle()
-    {
-        throw new System.NotImplementedException();
-    }
+
 
 
 
