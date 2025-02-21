@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class MonsterStat : MonoBehaviour
 {
+    #region Stat
     [SerializeField]
     private string _name;
     [SerializeField]
@@ -30,6 +31,7 @@ public class MonsterStat : MonoBehaviour
     public float AtkSpeed { get { return _atkSpeed; } set { _atkSpeed = value; } }
     public float Resist { get { return _resist; } set { _resist = value; } }
     public float DetectionRange { get { return _detectionRange; } set { _detectionRange = value; } }
+    #endregion
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
