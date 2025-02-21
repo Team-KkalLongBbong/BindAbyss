@@ -1,15 +1,28 @@
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public abstract class BaseMobController : MonoBehaviour
 {
-    protected MonsterStat _stat;
-    protected Define.MobState state;
+    [SerializeField]
+    protected Define.MobState   state;
+    [SerializeField]
+    protected GameObject        target;
+    [SerializeField]
+    protected Vector3           _destPos;
+    [SerializeField]
+    protected MonsterStat       stat;
+    [SerializeField]
+    protected Animator          anim;
 
     private void Start()
     {
-        _stat = gameObject.GetOrAddComponent<MonsterStat>();
-        state = Define.MobState.Move;
+        stat =      gameObject.GetOrAddComponent<MonsterStat>();
+        anim =      GetComponent<Animator>();
+
+        state =     Define.MobState.Move;
+        target =    GameObject.FindGameObjectWithTag("Player");
     }
+
     protected abstract void Idle();
 
     protected abstract void Move();
