@@ -37,7 +37,7 @@ public class MonsterStat : MonoBehaviour
     #endregion
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    void Awake()
     {
         _name = "Orc";
         _hp = 100;
@@ -45,10 +45,10 @@ public class MonsterStat : MonoBehaviour
         _atk = 10;
         _def = 5;
         _moveSpeed = 0.0f;
-        _atkSpeed = 1.0f;
+        _atkSpeed = 2.0f;
         _resist = 1.0f;
-        _detectionRange = 5.0f;
-        _atkRange = 6.0f;
+        _detectionRange = 10.0f;
+        _atkRange = 20.0f;
     }
 
     // Update is called once per frame
