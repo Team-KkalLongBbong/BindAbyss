@@ -1,9 +1,9 @@
 using UnityEngine;
 using UnityEngine.AI;
+using static UnityEngine.GraphicsBuffer;
 
 public class RangedMobController : BaseMobController
 {
-
     private void Update()
     {
         ActionControl();
@@ -33,6 +33,7 @@ public class RangedMobController : BaseMobController
         }
     }
 
+    //Maybe Don't Use
     protected override void Idle()
     {
         if (target == null)
@@ -48,12 +49,16 @@ public class RangedMobController : BaseMobController
         }
     }
 
+    //Watching Player & Choose Next Pattern
     protected override void Attack()
     {
+        Test targetStat = target.GetComponent<Test>();
+
         if (target != null)
         {
-            Test targetStat = target.GetComponent<Test>();
-            //targetStat.TestDamage(stat);
+            Vector3 dir = target.transform.position - transform.position;
+            Quaternion quat = Quaternion.LookRotation(dir);
+            transform.rotation = Quaternion.Lerp(transform.rotation, quat, 20 * Time.deltaTime);
 
             if (targetStat.hp > 0)
             {
@@ -72,14 +77,27 @@ public class RangedMobController : BaseMobController
         }
     }
 
+    public void CreateBullet()
+    {
+        Managers.Resource.Instantiate($"{gameObject.name}Bullet", gameObject.transform);
+    }
 
+    //For Range Debugging
     private void DebuggingGizmo()
     {
+        Vector3 center = new Vector3(transform.position.x, transform.position.y + 2f, transform.position.z);
+        
         Gizmos.color = Color.red;
+        for (int i = 0; i < 5; i++)
+        {
+            Gizmos.DrawWireSphere(center, stat.AtkRange);
+        }
 
-        Vector3 center = new Vector3(transform.position.x, transform.position.y+2f, transform.position.z);
-
-        Gizmos.DrawWireSphere(center, 50f);
+        Gizmos.color = Color.magenta;
+        for (int i = 0; i < 5; i++)
+        {
+            Gizmos.DrawWireSphere(center, stat.DetectionRange);
+        }
     }
 
 

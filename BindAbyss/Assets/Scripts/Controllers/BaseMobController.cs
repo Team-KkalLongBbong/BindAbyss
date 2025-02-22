@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 using static UnityEngine.GraphicsBuffer;
@@ -15,13 +16,22 @@ public abstract class BaseMobController : MonoBehaviour
     [SerializeField]
     protected Animator          anim;
 
+    BaseMobController           _isRangedMob;
+    Coroutine                   _attackCoroutine;
     private void Start()
     {
-        stat =      gameObject.GetOrAddComponent<MonsterStat>();
-        anim =      GetComponent<Animator>();
+        Init();
+    }
 
-        _state =     Define.MobState.Move;
-        target =    GameObject.FindGameObjectWithTag("Player");
+    void Init()
+    {
+        stat = gameObject.GetOrAddComponent<MonsterStat>();
+        anim = GetComponent<Animator>();
+
+        _state = Define.MobState.Move;
+        target = GameObject.FindGameObjectWithTag("Player");
+
+        _isRangedMob = gameObject.GetComponent<RangedMobController>();
     }
 
     public virtual Define.MobState State
@@ -36,20 +46,69 @@ public abstract class BaseMobController : MonoBehaviour
             {
                 case Define.MobState.Default:
                     anim.CrossFade("Idle", 0.1f);
+                    StopAttackCoroutine();
                     break;
                 case Define.MobState.Move:
-                    anim.CrossFade("Fly", 0.1f);
+                    anim.CrossFade("Move", 0.1f);
+                    StopAttackCoroutine();
                     break;
                 case Define.MobState.Attack:
-                   // anim.CrossFade("ATK", 0.1f, -1, 0);
+                    StartAttackCoroutine();
                     break;
             }
         }
     }
 
-    protected abstract void Idle();
+    //Make AttackSpeed With Coroutine
+    #region Coroutine
+    private void StartAttackCoroutine()
+    {
+        if (_attackCoroutine == null)
+        {
+            _attackCoroutine = StartCoroutine(RangedMobAtkCoroutine());
+        }
+    }
 
-    protected abstract void Attack();
+    private void StopAttackCoroutine()
+    {
+        if (_attackCoroutine != null)
+        {
+            StopCoroutine(_attackCoroutine);
+            _attackCoroutine = null;
+        }
+    }
+
+    private IEnumerator RangedMobAtkCoroutine()
+    {
+        while (true)
+        {
+            RangedMobAtk(_isRangedMob);
+            yield return new WaitForSeconds(stat.AtkSpeed);
+        }
+    }
+    #endregion
+
+    void RangedMobAtk(BaseMobController isRangedMob)
+    {
+        if (isRangedMob != null) //It is RangedMob
+        {
+            _destPos = target.transform.position;
+            float distance = (_destPos - transform.position).magnitude;
+            if (distance <= stat.DetectionRange)
+            {
+                anim.CrossFade("Attack2", 0.1f, -1, 0);
+            }
+            else
+            {
+                int skillGatcha = Random.Range(1, 11);
+                if (skillGatcha <= 8)
+                    anim.CrossFade("Attack1", 0.1f, -1, 0);
+                else
+                    anim.CrossFade("SpAtk", 0.1f, -1, 0);
+            }
+        }
+    }
+
 
     protected virtual void Move()
     {
@@ -96,4 +155,8 @@ public abstract class BaseMobController : MonoBehaviour
     {
         
     }
+
+    protected abstract void Idle();
+
+    protected abstract void Attack();
 }
