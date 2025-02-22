@@ -12,11 +12,6 @@ public class MeeleMobController : BaseMobController
         throw new System.NotImplementedException();
     }
 
-    protected override void Move()
-    {
-        throw new System.NotImplementedException();
-    }
-
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {

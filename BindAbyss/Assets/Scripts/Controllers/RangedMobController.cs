@@ -1,15 +1,19 @@
 using UnityEngine;
+using UnityEngine.AI;
 
 public class RangedMobController : BaseMobController
 {
+
     private void Update()
     {
         ActionControl();
+
+        Debug.Log($"{_state}");
     }
 
     protected void ActionControl()
     {
-        switch (state)
+        switch (State)
         {
             case Define.MobState.Default:
                 Idle();
@@ -31,21 +35,52 @@ public class RangedMobController : BaseMobController
 
     protected override void Idle()
     {
-        throw new System.NotImplementedException();
-    }
+        if (target == null)
+            return;
 
-    protected override void Move()
-    {
-        
+        float distance = (target.transform.position - transform.position).magnitude;
+
+        //Current Status >> Move
+        if (distance <= stat.DetectionRange)
+        {
+            State = Define.MobState.Move;
+            return;
+        }
     }
 
     protected override void Attack()
     {
-        throw new System.NotImplementedException();
+        if (target != null)
+        {
+            Test targetStat = target.GetComponent<Test>();
+            //targetStat.TestDamage(stat);
+
+            if (targetStat.hp > 0)
+            {
+                float distance = (target.transform.position - transform.position).magnitude;
+                if (distance <= stat.AtkRange)
+                    State = Define.MobState.Attack;
+                else
+                    State = Define.MobState.Move;
+            }
+            else
+                State = Define.MobState.Default;
+        }
+        else
+        {
+            State = Define.MobState.Default;
+        }
     }
 
 
+    private void DebuggingGizmo()
+    {
+        Gizmos.color = Color.red;
 
+        Vector3 center = new Vector3(transform.position.x, transform.position.y+2f, transform.position.z);
+
+        Gizmos.DrawWireSphere(center, 50f);
+    }
 
 
 }

@@ -21,6 +21,8 @@ public class MonsterStat : MonoBehaviour
     private float _resist;
     [SerializeField]
     private float _detectionRange;
+    [SerializeField]
+    private float _atkRange;
 
     public string Name { get { return _name; } set { _name = value; } }
     public int Hp { get { return _hp; } set { _hp = value; } }
@@ -31,6 +33,7 @@ public class MonsterStat : MonoBehaviour
     public float AtkSpeed { get { return _atkSpeed; } set { _atkSpeed = value; } }
     public float Resist { get { return _resist; } set { _resist = value; } }
     public float DetectionRange { get { return _detectionRange; } set { _detectionRange = value; } }
+    public float AtkRange { get { return _atkRange; } set { _atkRange = value; } }
     #endregion
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -41,10 +44,11 @@ public class MonsterStat : MonoBehaviour
         _maxHp = 100;
         _atk = 10;
         _def = 5;
-        _moveSpeed = 5.0f;
+        _moveSpeed = 0.0f;
         _atkSpeed = 1.0f;
         _resist = 1.0f;
         _detectionRange = 5.0f;
+        _atkRange = 6.0f;
     }
 
     // Update is called once per frame
