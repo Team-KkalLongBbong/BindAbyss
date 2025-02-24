@@ -6,31 +6,9 @@ public class RangedMobController : BaseMobController
 {
     private void Update()
     {
-        ActionControl();
-
         Debug.Log($"{_state}");
-    }
 
-    protected void ActionControl()
-    {
-        switch (State)
-        {
-            case Define.MobState.Default:
-                Idle();
-                break;
-            case Define.MobState.Attack:
-                Attack();
-                break;
-            case Define.MobState.Move:
-                Move();
-                break;
-            case Define.MobState.Damaged:
-                Damaged();
-                break;
-            case Define.MobState.Death:
-                Death();
-                break;
-        }
+        ActionControl();
     }
 
     //Maybe Don't Use
@@ -49,8 +27,34 @@ public class RangedMobController : BaseMobController
         }
     }
 
-    //Watching Player & Choose Next Pattern
+    //Attack
     protected override void Attack()
+    {
+        _destPos = target.transform.position;
+        float distance = (_destPos - transform.position).magnitude;
+        if (distance <= stat.DetectionRange)
+        {
+            anim.CrossFade("Attack2", 0.1f, -1, 0);
+            Debug.Log("Meele Atk");
+        }
+        else
+        {
+            int skillGatcha = Random.Range(1, 11);
+            if (skillGatcha <= 8)
+            {
+                Debug.Log("Normal Atk");
+                anim.CrossFade("Attack1", 0.1f, -1, 0);
+            }
+            else
+            {
+                Debug.Log("Special Atk");
+                anim.CrossFade("SpAtk", 0.1f, -1, 0);
+            }
+        }
+    }
+
+    //Watching Player & Choose Next Pattern
+    protected override void AttackAI()
     {
         Test targetStat = target.GetComponent<Test>();
 
@@ -100,5 +104,5 @@ public class RangedMobController : BaseMobController
         }
     }
 
-
+    
 }
