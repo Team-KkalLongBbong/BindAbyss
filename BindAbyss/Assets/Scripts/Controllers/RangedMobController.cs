@@ -12,8 +12,10 @@ public class RangedMobController : BaseMobController
     }
 
     //Maybe Don't Use
-    protected override void Idle()
+    protected override void Match()
     {
+        base.Match();
+
         if (target == null)
             return;
 
