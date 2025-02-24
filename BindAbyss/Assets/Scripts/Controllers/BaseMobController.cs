@@ -67,7 +67,7 @@ public abstract class BaseMobController : MonoBehaviour
         switch (State)
         {
             case Define.MobState.Default:
-                Idle();
+                Match();
                 break;
             case Define.MobState.Attack:
                 AttackAI();
@@ -159,12 +159,11 @@ public abstract class BaseMobController : MonoBehaviour
         
     }
 
-    protected abstract void Attack();
-
     protected virtual void Match()
     {
 
     }
 
+    protected abstract void Attack();
     protected abstract void AttackAI();
 }
