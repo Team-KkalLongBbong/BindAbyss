@@ -16,8 +16,8 @@ public abstract class BaseMobController : MonoBehaviour
     [SerializeField]
     protected Animator          anim;
 
-    BaseMobController           _isRangedMob;
     Coroutine                   _attackCoroutine;
+
     private void Start()
     {
         Init();
@@ -30,8 +30,11 @@ public abstract class BaseMobController : MonoBehaviour
 
         _state = Define.MobState.Move;
         target = GameObject.FindGameObjectWithTag("Player");
+    }
 
-        _isRangedMob = gameObject.GetComponent<RangedMobController>();
+    private void Update()
+    {
+
     }
 
     public virtual Define.MobState State
@@ -59,17 +62,39 @@ public abstract class BaseMobController : MonoBehaviour
         }
     }
 
-    //Make AttackSpeed With Coroutine
-    #region Coroutine
-    private void StartAttackCoroutine()
+    protected virtual void ActionControl()
     {
-        if (_attackCoroutine == null)
+        switch (State)
         {
-            _attackCoroutine = StartCoroutine(RangedMobAtkCoroutine());
+            case Define.MobState.Default:
+                Idle();
+                break;
+            case Define.MobState.Attack:
+                AttackAI();
+                break;
+            case Define.MobState.Move:
+                Move();
+                break;
+            case Define.MobState.Damaged:
+                Damaged();
+                break;
+            case Define.MobState.Death:
+                Death();
+                break;
         }
     }
 
-    private void StopAttackCoroutine()
+    //Make AttackSpeed With Coroutine
+    #region Coroutine
+    protected virtual void StartAttackCoroutine()
+    {
+        if (_attackCoroutine == null)
+        {
+            _attackCoroutine = StartCoroutine(AtkCoroutine());
+        }
+    }
+
+    protected virtual void StopAttackCoroutine()
     {
         if (_attackCoroutine != null)
         {
@@ -78,37 +103,15 @@ public abstract class BaseMobController : MonoBehaviour
         }
     }
 
-    private IEnumerator RangedMobAtkCoroutine()
+    protected virtual IEnumerator AtkCoroutine()
     {
         while (true)
         {
-            RangedMobAtk(_isRangedMob);
+            Attack();
             yield return new WaitForSeconds(stat.AtkSpeed);
         }
     }
     #endregion
-
-    void RangedMobAtk(BaseMobController isRangedMob)
-    {
-        if (isRangedMob != null) //It is RangedMob
-        {
-            _destPos = target.transform.position;
-            float distance = (_destPos - transform.position).magnitude;
-            if (distance <= stat.DetectionRange)
-            {
-                anim.CrossFade("Attack2", 0.1f, -1, 0);
-            }
-            else
-            {
-                int skillGatcha = Random.Range(1, 11);
-                if (skillGatcha <= 8)
-                    anim.CrossFade("Attack1", 0.1f, -1, 0);
-                else
-                    anim.CrossFade("SpAtk", 0.1f, -1, 0);
-            }
-        }
-    }
-
 
     protected virtual void Move()
     {
@@ -156,7 +159,9 @@ public abstract class BaseMobController : MonoBehaviour
         
     }
 
+    protected abstract void Attack();
+
     protected abstract void Idle();
 
-    protected abstract void Attack();
+    protected abstract void AttackAI();
 }
