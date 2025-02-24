@@ -161,7 +161,10 @@ public abstract class BaseMobController : MonoBehaviour
 
     protected abstract void Attack();
 
-    protected abstract void Idle();
+    protected virtual void Match()
+    {
+
+    }
 
     protected abstract void AttackAI();
 }
