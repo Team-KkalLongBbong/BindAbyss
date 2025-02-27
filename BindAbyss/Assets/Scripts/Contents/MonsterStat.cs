@@ -44,7 +44,7 @@ public class MonsterStat : MonoBehaviour
         _maxHp = 100;
         _atk = 10;
         _def = 5;
-        _moveSpeed = 0.0f;
+        _moveSpeed = 3.0f;
         _atkSpeed = 2.0f;
         _resist = 1.0f;
         _detectionRange = 10.0f;

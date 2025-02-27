@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using static UnityEngine.GraphicsBuffer;
@@ -18,6 +19,8 @@ public abstract class BaseMobController : MonoBehaviour
 
     Coroutine                   _attackCoroutine;
 
+    List<GameObject>            _nearNeighbors = new List<GameObject>();
+
     private void Start()
     {
         Init();
@@ -30,11 +33,6 @@ public abstract class BaseMobController : MonoBehaviour
 
         _state = Define.MobState.Move;
         target = GameObject.FindGameObjectWithTag("Player");
-    }
-
-    private void Update()
-    {
-
     }
 
     public virtual Define.MobState State

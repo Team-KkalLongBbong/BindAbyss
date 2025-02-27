@@ -70,7 +70,7 @@ public class RangedMobController : BaseMobController
             {
                 float distance = (target.transform.position - transform.position).magnitude;
                 if (distance <= stat.AtkRange)
-                    State = Define.MobState.Attack;
+                    State = Define.MobState.Attack; //근접공격 한번 한 후에 튀는게 필요함
                 else
                     State = Define.MobState.Move;
             }
@@ -85,7 +85,10 @@ public class RangedMobController : BaseMobController
 
     public void CreateBullet()
     {
-        Managers.Resource.Instantiate($"{gameObject.name}Bullet", gameObject.transform);
+        Vector3 spawnPos = transform.GetChild(0).position;
+        GameObject bullet = Managers.Resource.Instantiate($"{gameObject.name}Bullet", gameObject.transform);
+        bullet.transform.position = spawnPos;
+        bullet.transform.rotation = gameObject.transform.rotation;
     }
 
     //For Range Debugging
