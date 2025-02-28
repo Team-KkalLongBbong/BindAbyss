@@ -89,6 +89,11 @@ public class RangedMobController : BaseMobController
         GameObject bullet = Managers.Resource.Instantiate($"{gameObject.name}Bullet", gameObject.transform);
         bullet.transform.position = spawnPos;
         bullet.transform.rotation = gameObject.transform.rotation;
+
+        BulletController bulletController = bullet.GetComponent<BulletController>();
+        bulletController.parentStat = GetComponent<MonsterStat>();
+
+        anim.CrossFade("Idle", 0.2f);
     }
 
     //For Range Debugging

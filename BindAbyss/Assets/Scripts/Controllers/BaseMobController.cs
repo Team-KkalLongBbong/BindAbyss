@@ -16,10 +16,9 @@ public abstract class BaseMobController : MonoBehaviour
     protected MonsterStat       stat;
     [SerializeField]
     protected Animator          anim;
-
+    [SerializeField]
+    protected bool              _atkActive = false;
     Coroutine                   _attackCoroutine;
-
-    List<GameObject>            _nearNeighbors = new List<GameObject>();
 
     private void Start()
     {
@@ -113,8 +112,6 @@ public abstract class BaseMobController : MonoBehaviour
 
     protected virtual void Move()
     {
-        State = Define.MobState.Move;
-
         //Current Statue >> Attack
         if (target != null)
         {

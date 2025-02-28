@@ -4,17 +4,22 @@ using static UnityEngine.GraphicsBuffer;
 public class BulletController : MonoBehaviour
 {
     [SerializeField]
-    float _bulletSpeed = 0.5f;
+    float               _bulletSpeed = 0.5f;
+    Rigidbody           _rb;
+
+    public MonsterStat  parentStat;
 
     private void Start()
     {
         _bulletSpeed = 5f;
+        _rb = GetComponent<Rigidbody>();
+        _rb.linearVelocity = transform.forward * _bulletSpeed;
+        MonsterStat stat = GetComponentInParent<MonsterStat>();
+        gameObject.transform.parent = null;
     }
 
     private void Update()
     {
-        //Vector3 movement = transform.forward * _bulletSpeed * Time.deltaTime;
-
         transform.Translate(Vector3.forward * _bulletSpeed * Time.deltaTime);
     }
 
@@ -24,12 +29,10 @@ public class BulletController : MonoBehaviour
 
         if (collision.collider.gameObject == target)
         {
-            MonsterStat stat = GetComponentInParent<MonsterStat>();
-
             if (target != null)
             {
                 Test targetStat = target.GetComponent<Test>();
-                targetStat.TestDamage(stat);
+                targetStat.TestDamage(parentStat);
 
                 Destroy(gameObject);
             }
