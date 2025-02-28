@@ -23,7 +23,7 @@ public abstract class BaseMobController : MonoBehaviour
         Init();
     }
 
-    void Init()
+    protected void Init()
     {
         stat = gameObject.GetOrAddComponent<MonsterStat>();
         anim = GetComponent<Animator>();
