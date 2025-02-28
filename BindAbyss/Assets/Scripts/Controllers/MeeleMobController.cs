@@ -6,6 +6,9 @@ using UnityEngine.AI;
 
 public class MeeleMobController : BaseMobController
 {
+    private float _spAtkCooldown = 5f;
+    private float _lastSpAtkTime = -5f;
+
     private void Start()
     {
         base.Init();
@@ -18,12 +21,14 @@ public class MeeleMobController : BaseMobController
         ActionControl();
     }
 
+
     protected override void Attack()
     {
         int skillGatcha = Random.Range(0, 9);
         bool hasSpAtk = true;
+        bool canUseSpAtk = (Time.time >= _lastSpAtkTime + _spAtkCooldown);
 
-        if (hasSpAtk)
+        if (hasSpAtk && canUseSpAtk)
         {
             if (skillGatcha >= 0 && skillGatcha <= 3)
                 anim.CrossFade("Attack1", 0.1f, -1, 0);
