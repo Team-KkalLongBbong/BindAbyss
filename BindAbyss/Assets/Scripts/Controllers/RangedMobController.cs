@@ -4,6 +4,9 @@ using static UnityEngine.GraphicsBuffer;
 
 public class RangedMobController : BaseMobController
 {
+    float   _spAtkCoolTime = 5f;
+    float   _lastSpAtkCoolTime = -5f;
+
     private void Update()
     {
         Debug.Log($"{_state}");
@@ -32,8 +35,12 @@ public class RangedMobController : BaseMobController
     //Attack
     protected override void Attack()
     {
+        
+
+
         _destPos = target.transform.position;
         float distance = (_destPos - transform.position).magnitude;
+
         if (distance <= stat.DetectionRange)
         {
             anim.CrossFade("Attack2", 0.1f, -1, 0);
